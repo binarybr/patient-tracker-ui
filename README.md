@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+🖥 Patient Tracker – Frontend (Admin & User UI)
+📌 Overview
+Patient Tracker Frontend is a React + MUI application designed for Admins, Doctors, and Patients.
+It integrates seamlessly with the backend via REST APIs and is gateway‑ready for microservices.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🛠 Tech Stack
 
-Currently, two official plugins are available:
+React
+TypeScript
+Material‑UI (MUI)
+React Query
+Axios
+JWT Authentication
+Vite / CRA
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+🧭 Application Sections
+👤 Admin → User Management
+Tabs:
+Users | Doctors | Patients
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Admins can:
 
-## Expanding the ESLint configuration
+Manage users
+Approve / reject doctors
+Soft delete, restore, or hard delete doctors & patients
+View system stats
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🩺 Doctor Management (Admin)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Doctor profiles
+Approve / Reject
+Soft Delete / Restore
+Hard Delete (confirmed)
+Availability management
+Status indicators:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Pending
+Approved
+Deleted
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Filters:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+All / Pending / Approved / Deleted
+
+
+
+
+🧑‍🤝‍🧑 Patient Management (Admin)
+
+Patient profiles
+Soft Delete / Restore
+Hard Delete (confirmed)
+Status visibility
+Safe admin actions only
+
+
+📅 Appointments
+
+View appointments
+Role‑specific views:
+
+Patient → My Appointments
+Doctor → My Schedule
+
+
+Availability enforcement handled by backend
+
+
+📁 Medical Cases
+
+Case CRUD
+Case history dialog
+Version tracking UI
+Immutable audit visibility
+
+
+📊 Admin Stats
+
+Users count
+Doctors count
+Patients count
+Simple dashboard powered by /api/admin/stats
+
+
+🧩 UI Patterns & Safety
+
+Admin actions always guarded by confirmation dialogs
+Hard delete requires typing DELETE
+Soft delete is default
+Restore available for all soft‑deleted records
+Consistent UX across Users / Doctors / Patients
+
+
+▶️ Running the Frontend
+npm install
+npm run dev
+
+Frontend runs on:
+http://localhost:5173
+
+
+🔗 API Integration
+
+Frontend points to:
+
+/api/**
+
+
+Backend handles routing
+Ready for API Gateway without UI changes
+
+
+✅ Current State
+✅ Fully functional
+✅ Admin‑safe
+✅ Backend‑aligned
+✅ Gateway‑ready
+✅ No rewrites needed for microservices
+
+🔮 Next Phase
+
+API Gateway routing
+Auth service separation
+Zero frontend changes during migration
