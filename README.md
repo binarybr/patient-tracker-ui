@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# Patient Tracker UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript single-page application for managing patients, doctors, appointments, and medical cases.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This frontend is built with Vite, React 19, TypeScript, Material UI, and React Query.
+It supports role-based authentication and authorization with three roles:
+- `ADMIN`
+- `DOCTOR`
+- `PATIENT`
 
-## React Compiler
+The app expects a backend API available under `/api`, proxied during development to `http://localhost:8080`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- JWT authentication with login and registration
+- Role-based route protection and navigation
+- Admin management for users, doctors, patients, cases, exports, and stats
+- Doctor availability scheduling
+- Appointment listing and pending appointment workflows
+- Excel export links for admin and user-specific reports
+- Reusable UI dialogs for confirmation and deletion
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19
+- TypeScript 6
+- Vite 4
+- MUI 9
+- TanStack React Query 5
+- React Router 7
+- Axios
+- dayjs
+- React Hook Form
+- Zod
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Setup
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Open the app at `http://localhost:5173` and ensure the backend API is running on `http://localhost:8080`.
+
+## Build
+
+```bash
+npm run build
+```
+
+This runs TypeScript build checks and the Vite production build.
+
+## Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+- `src/main.tsx` - App entry point and provider setup
+- `src/App.tsx` - Route configuration and layout
+- `src/auth` - Authentication context, storage, and route protection
+- `src/api` - Axios client and typed API endpoint wrappers
+- `src/layout` - App shell and navigation menu
+- `src/pages` - Feature pages and admin views
+- `src/ui` - Shared UI components and dialogs
+- `src/types` - TypeScript models for API data
+
+## Authentication Flow
+
+Authentication state is maintained in context:
+- Access token and refresh token are stored in `localStorage`
+- Axios interceptors attach access tokens and refresh on 401
+- Protected routes use `RequireAuth` to enforce login and role access
+
+## Notes
+
+- The application assumes a backend API at `/api`.
+- Development server proxies `/api` requests to `http://localhost:8080`.
+- The app currently uses frontend routing and UI scaffolding tailored to a patient tracker environment.
+
+## Contributing
+
+If you extend the app, keep the role-based route rules and API wrappers consistent.
+
+## License
+
+This repository is private and unlicensed.

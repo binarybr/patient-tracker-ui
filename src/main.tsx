@@ -8,8 +8,15 @@ import { AuthProvider } from './auth/AuthProvider'
 import { SnackProvider } from './ui/Snack'
 import App from './App'
 
+// Initialize React Query client for managing server state and caching
 const qc = new QueryClient()
 
+// Render app with provider hierarchy:
+// - QueryClientProvider: manages API requests and caching
+// - ThemeProvider: applies Material-UI theme
+// - BrowserRouter: enables client-side routing
+// - AuthProvider: manages authentication state
+// - SnackProvider: handles notification messages
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={qc}>

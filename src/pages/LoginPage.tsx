@@ -3,6 +3,12 @@ import { Box, Button, Container, Paper, TextField, Typography } from '@mui/mater
 import { useAuth } from '../auth/AuthProvider'
 import { useNavigate } from 'react-router-dom'
 
+// ============================================================================
+// Login Page
+// ============================================================================
+// Simple login form for existing users.
+// Handles email/password input, sign in, and navigation to registration.
+
 export default function LoginPage() {
     const { login } = useAuth()
     const nav = useNavigate()
@@ -16,19 +22,33 @@ export default function LoginPage() {
                 <Typography variant="h5" gutterBottom>Login</Typography>
 
                 <Box sx={{ display: 'grid', gap: 2 }}>
-                    <TextField label="Email" value={email} onChange={e => setEmail(e.target.value)} />
-                    <TextField label="Password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <TextField
+                        label="Email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <TextField
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+
+                    {/* Display login error message when sign-in fails */}
                     {err && <Typography color="error">{err}</Typography>}
 
-                    <Button variant="contained" onClick={async () => {
-                        setErr('')
-                        try {
-                            await login(email, password)
-                            nav('/')
-                        } catch {
-                            setErr('Login failed')
-                        }
-                    }}>
+                    <Button
+                        variant="contained"
+                        onClick={async () => {
+                            setErr('')
+                            try {
+                                await login(email, password)
+                                nav('/')
+                            } catch {
+                                setErr('Login failed')
+                            }
+                        }}
+                    >
                         Sign In
                     </Button>
 

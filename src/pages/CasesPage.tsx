@@ -12,6 +12,11 @@ import { doctorsApi } from '../api/doctors'
 import type { CaseDto, MedicalCase } from '../types/api'
 import CaseHistoryDialog from '../ui/CaseHistoryDialog'
 
+// ============================================================================
+// Medical Cases Page
+// ============================================================================
+// Administrative view for creating and editing medical cases for patients.
+// Includes patient/doctor selection, status display, and case history lookup.
 
 export default function CasesPage() {
     const qc = useQueryClient()

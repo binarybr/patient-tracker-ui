@@ -3,6 +3,12 @@ import { Box, Button, Paper, TextField, Typography } from '@mui/material'
 import { exportsApi } from '../api/exports'
 import { useAuth } from '../auth/AuthProvider'
 
+// ============================================================================
+// Exports Page
+// ============================================================================
+// Provides direct Excel export links for admins or current user role exports.
+// Admin mode supports full system exports and filtered doctor/patient appointment exports.
+
 export default function ExportsPage({ mode }: { mode: 'ADMIN' | 'MINE' }) {
     const { user } = useAuth()
     const [doctorId, setDoctorId] = React.useState('')

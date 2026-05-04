@@ -10,6 +10,12 @@ import HardDeleteDialog from '../ui/HardDeleteDialog'
 import { useSnack } from '../ui/Snack'
 import { Typography } from '@mui/material'
 
+// ============================================================================
+// Patients Management Page
+// ============================================================================
+// Admin-facing page to manage patients. Supports create, edit, soft delete,
+// restore, and permanent deletion of patient records.
+
 export default function PatientsPage() {
     const qc = useQueryClient()
     const snack = useSnack()

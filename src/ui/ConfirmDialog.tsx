@@ -8,17 +8,33 @@ import {
     DialogTitle
 } from '@mui/material'
 
+// ============================================================================
+// Confirmation Dialog Component
+// ============================================================================
+// Reusable modal dialog for user confirmations:
+// - Custom title and message
+// - Customizable button labels
+// - Danger (destructive) vs normal actions
+// - Async confirmation handling with loading state
+
 type Props = {
-    open: boolean
-    title?: string
-    message?: string
-    confirmText?: string
-    cancelText?: string
-    danger?: boolean
-    onConfirm: () => void | Promise<void>
-    onClose: () => void
+    open: boolean                                    // Whether dialog is visible
+    title?: string                                   // Dialog title
+    message?: string                                 // Confirmation message
+    confirmText?: string                             // Confirm button label
+    cancelText?: string                              // Cancel button label
+    danger?: boolean                                 // If true, confirm button is red (error color)
+    onConfirm: () => void | Promise<void>           // Called when user clicks confirm
+    onClose: () => void                              // Called when dialog should close
 }
 
+/**
+ * ConfirmDialog Component
+ * - Handles async confirmation with loading state
+ * - Disables buttons during async operation
+ * - Supports both sync and async confirm handlers
+ * - Optional "danger" mode for destructive actions (delete, etc)
+ */
 export default function ConfirmDialog({
     open,
     title = 'Confirm',
@@ -38,12 +54,15 @@ export default function ConfirmDialog({
                 <DialogContentText>{message}</DialogContentText>
             </DialogContent>
             <DialogActions>
+                {/* Cancel button - closes dialog without action */}
                 <Button onClick={onClose} disabled={busy}>
                     {cancelText}
                 </Button>
+                
+                {/* Confirm button - triggers onConfirm callback */}
                 <Button
                     variant="contained"
-                    color={danger ? 'error' : 'primary'}
+                    color={danger ? 'error' : 'primary'}  // Red for dangerous/destructive actions
                     disabled={busy}
                     onClick={async () => {
                         try {

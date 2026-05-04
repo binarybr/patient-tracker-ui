@@ -10,6 +10,12 @@ import HardDeleteDialog from '../ui/HardDeleteDialog'
 import { useSnack } from '../ui/Snack'
 import { Typography } from '@mui/material'
 
+// ============================================================================
+// Doctors Management Page
+// ============================================================================
+// Admin interface for managing doctor profiles, approval workflow, and deletion.
+// Includes filtering by status, edit/create dialog, soft delete, restore, and hard delete.
+
 type DoctorFilter = 'ALL' | 'PENDING' | 'APPROVED' | 'DELETED'
 
 export default function DoctorsPage() {

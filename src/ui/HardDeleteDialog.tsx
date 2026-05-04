@@ -1,6 +1,12 @@
 import * as React from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material'
 
+// ============================================================================
+// Hard Delete Confirmation Dialog
+// ============================================================================
+// Reusable confirmation modal for irreversible delete actions.
+// Requires typing DELETE to enable the final destructive button.
+
 type Props = {
     open: boolean
     entityLabel: string

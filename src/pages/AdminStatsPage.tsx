@@ -3,6 +3,11 @@ import { useQuery } from '@tanstack/react-query'
 import Page from '../ui/Page'
 import { adminApi } from '../api/admin'
 
+// ============================================================================
+// Admin Statistics Page
+// ============================================================================
+// Admin dashboard widget showing system counts for users, doctors, and patients.
+
 export default function AdminStatsPage() {
     const q = useQuery({
         queryKey: ['adminStats'],

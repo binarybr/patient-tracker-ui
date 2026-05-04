@@ -10,6 +10,12 @@ import { useSnack } from '../ui/Snack'
 import { appointmentsApi } from '../api/appointments'
 import type { Appointment } from '../types/api'
 
+// ============================================================================
+// Pending Appointments Page
+// ============================================================================
+// Displays all upcoming appointments that are still pending or scheduled.
+// Provides a refresh action and placeholder status update/cancel actions.
+
 export default function PendingAppointmentsPage() {
     const qc = useQueryClient()
     const snack = useSnack()

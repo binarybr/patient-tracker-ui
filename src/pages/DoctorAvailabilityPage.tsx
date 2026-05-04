@@ -8,6 +8,12 @@ import { useSnack } from '../ui/Snack'
 import { doctorAvailabilityApi } from '../api/doctorAvailability'
 import type { DayOfWeek, DoctorAvailability } from '../types/api'
 
+// ============================================================================
+// Doctor Availability Page
+// ============================================================================
+// Allows doctors to manage weekly availability windows for appointment booking.
+// Supports creating time slots, enabling/disabling them, and viewing existing schedule.
+
 const days: DayOfWeek[] = [
   'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'
 ]

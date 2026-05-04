@@ -9,6 +9,12 @@ import type { Appointment } from '../types/api'
 import Page from '../ui/Page'
 import { useAuth } from '../auth/AuthProvider'
 
+// ============================================================================
+// My Appointments Page
+// ============================================================================
+// User-facing view for a doctor or patient to see their own upcoming appointments.
+// Supports filtering by date window and handles missing profile linkage errors.
+
 export default function MyAppointmentsPage() {
     const [from, setFrom] = React.useState(dayjs().startOf('day').toISOString())
     const [to, setTo] = React.useState(dayjs().add(30, 'day').endOf('day').toISOString())

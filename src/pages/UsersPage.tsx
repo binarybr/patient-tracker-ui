@@ -9,6 +9,13 @@ import { useSnack } from '../ui/Snack'
 import { usersApi } from '../api/users'
 import type { Role, UserResponseDto, UpdateUserRequestDto } from '../types/api'
 
+// ============================================================================
+// User Management Page
+// ============================================================================
+// Admin-facing table for managing user accounts.
+// Supports listing users, creating new accounts, editing roles/status, and deletion.
+// Uses React Query to fetch and refresh user list on mutations.
+
 const roles: Role[] = ['ADMIN', 'DOCTOR', 'PATIENT']
 
 export default function UsersPage() {

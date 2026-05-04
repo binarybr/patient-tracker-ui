@@ -5,6 +5,12 @@ import { useQuery } from '@tanstack/react-query'
 import { casesApi } from '../api/cases'
 import type { MedicalCaseVersion } from '../types/api'
 
+// ============================================================================
+// Case History Dialog
+// ============================================================================
+// Displays the version history of a medical case in a modal dialog.
+// Fetches case versions when opened and shows audit rows in a data grid.
+
 type Props = {
     open: boolean
     caseId: number | null
